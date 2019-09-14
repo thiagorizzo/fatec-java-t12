@@ -7,7 +7,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="models.Produto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@include file="Menu.jsp" %>
 <!DOCTYPE html>
 <html>
     <head>
