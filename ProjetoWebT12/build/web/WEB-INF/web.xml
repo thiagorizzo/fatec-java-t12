@@ -15,6 +15,11 @@
         <url-pattern>/Produtos</url-pattern>
     </servlet-mapping>-->
     
+    <context-param>
+        <param-name>connectionString</param-name>
+        <param-value>jdbc:mysql:...</param-value>
+    </context-param>
+    
     <session-config>
         <session-timeout>
             30
