@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Optional;
 import models.Produto;
 
-public class ProdutoRepository implements IProdutoRepository {
+public class ProdutoInMemoryRepository implements IProdutoRepository {
 
     private ArrayList<Produto> produtos;
     
-    public ProdutoRepository() {
+    public ProdutoInMemoryRepository() {
         produtos = new ArrayList<Produto>();
         produtos.add(new Produto(1, "League of Legends", 0));
         produtos.add(new Produto(2, "World of Warcraft", 259.0f));

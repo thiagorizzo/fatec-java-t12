@@ -1,5 +1,6 @@
 package servlets;
 
+import enums.ProdutoRepositoryTypeEnum;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Array;
@@ -15,8 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import models.Produto;
-import repository.ProdutoRepository;
-import repository.IProdutoRepository;
+import repository.*;
 
 @WebServlet(
         name = "Listar Produtos",
@@ -24,14 +24,14 @@ import repository.IProdutoRepository;
 )
 public class ListarProdutosServlet extends HttpServlet {
 
-    private IProdutoRepository produtoRepository = new ProdutoRepository();
+    private IProdutoRepository produtoRepository = ProdutoRepositoryFactory.create(ProdutoRepositoryTypeEnum.InMemory);
     
     public void init(ServletConfig config) {
         //String connectionString = getServletContext().getInitParameter("connectionString");
     }
     
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response){
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
         String url = request.getRequestURI();
         
         try {
@@ -59,14 +59,7 @@ public class ListarProdutosServlet extends HttpServlet {
 
             // Repassar request e response para JSP
             RequestDispatcher rd = request.getRequestDispatcher("Erro.jsp");
-            
-            try {
-                rd.forward(request, response);
-            } catch (ServletException ex1) {
-                Logger.getLogger(ListarProdutosServlet.class.getName()).log(Level.SEVERE, null, ex1);
-            } catch (IOException ex1) {
-                Logger.getLogger(ListarProdutosServlet.class.getName()).log(Level.SEVERE, null, ex1);
-            }
+            rd.forward(request, response);
         }
     }
 }
