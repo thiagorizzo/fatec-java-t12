@@ -23,8 +23,6 @@ import repository.*;
         urlPatterns = "/Produtos"
 )
 public class ListarProdutosServlet extends HttpServlet {
-
-    private IProdutoRepository produtoRepository = ProdutoRepositoryFactory.create(ProdutoRepositoryTypeEnum.InMemory);
     
     public void init(ServletConfig config) {
         //String connectionString = getServletContext().getInitParameter("connectionString");
@@ -32,9 +30,15 @@ public class ListarProdutosServlet extends HttpServlet {
     
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        String url = request.getRequestURI();
-        
+        RepositoryOptions produtoRepositoryOptions = new RepositoryOptions();
+        produtoRepositoryOptions.setDatabaseDriver("com.mysql.jdbc.Driver");
+        produtoRepositoryOptions.setDatabaseConnectionString("jdbc:mysql://localhost:3306/projetoweb?serverTimezone=UTC");
+        produtoRepositoryOptions.setDatabaseUserName("root");
+        produtoRepositoryOptions.setDatabaseUserPassword("");
+
         try {
+            IProdutoRepository produtoRepository = ProdutoRepositoryFactory.create(ProdutoRepositoryTypeEnum.Database, produtoRepositoryOptions);
+        
             ArrayList<Produto> produtos = null;
             
             String codigoString = request.getParameter("codigo");

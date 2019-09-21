@@ -15,10 +15,10 @@ public class Database {
         Class.forName(driver);
     }
     
-    public static Connection getConnection(String driver, String stringConnection) throws ClassNotFoundException, SQLException {
+    public static Connection getConnection(String driver, String stringConnection, String userName, String userPassword) throws ClassNotFoundException, SQLException {
         Database.getInstance(driver, stringConnection);
         if (connection == null)
-            connection = DriverManager.getConnection(stringConnection);
+            connection = DriverManager.getConnection(stringConnection, userName, userPassword);
 
         return connection;
     }

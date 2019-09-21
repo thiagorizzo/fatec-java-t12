@@ -17,7 +17,12 @@
     
     <context-param>
         <param-name>connectionString</param-name>
-        <param-value>jdbc:mysql:...</param-value>
+        <param-value>jdbc:mysql://localhost:3306/projetoweb</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>driver</param-name>
+        <param-value>com.mysql.jdbc.Driver</param-value>
     </context-param>
     
     <session-config>
