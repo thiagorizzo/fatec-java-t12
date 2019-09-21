@@ -21,7 +21,7 @@ public class ProdutoDatabaseRepository implements IProdutoRepository {
     public Optional<Produto> getByCodigo(int codigo) throws SQLException {
         Optional<Produto> produto = null;
         
-        PreparedStatement ps = connection.prepareStatement("SELECT * FROM produto WHERE codigo = ?");
+        PreparedStatement ps = connection.prepareStatement("SELECT * FROM produto WHERE id = ?");
         ps.setInt(1, codigo);
         ResultSet rs = ps.executeQuery();
         if (rs.first()) {

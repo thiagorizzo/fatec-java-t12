@@ -32,6 +32,7 @@
                         <td><%= produto.getCodigo() %></td>
                         <td><%= produto.getNome() %></td>
                         <td><%= produto.getValor()%></td>
+                        <td><a href="/ProjetoWebT12/AdicionarCarrinho?codigo=<%= produto.getCodigo() %>">Adicionar</a></td>
                     </tr>
                 <% } %>
             </tbody>

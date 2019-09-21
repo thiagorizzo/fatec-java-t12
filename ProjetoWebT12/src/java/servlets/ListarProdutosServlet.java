@@ -15,29 +15,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import models.Produto;
+import models.*;
 import repository.*;
 
 @WebServlet(
         name = "Listar Produtos",
         urlPatterns = "/Produtos"
 )
-public class ListarProdutosServlet extends HttpServlet {
-    
-    public void init(ServletConfig config) {
-        //String connectionString = getServletContext().getInitParameter("connectionString");
-    }
+public class ListarProdutosServlet extends BaseServlet {
     
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        RepositoryOptions produtoRepositoryOptions = new RepositoryOptions();
-        produtoRepositoryOptions.setDatabaseDriver("com.mysql.jdbc.Driver");
-        produtoRepositoryOptions.setDatabaseConnectionString("jdbc:mysql://localhost:3306/projetoweb?serverTimezone=UTC");
-        produtoRepositoryOptions.setDatabaseUserName("root");
-        produtoRepositoryOptions.setDatabaseUserPassword("");
-
         try {
-            IProdutoRepository produtoRepository = ProdutoRepositoryFactory.create(ProdutoRepositoryTypeEnum.Database, produtoRepositoryOptions);
+            IProdutoRepository produtoRepository = ProdutoRepositoryFactory.create(ProdutoRepositoryTypeEnum.Database, repositoryOptions);
         
             ArrayList<Produto> produtos = null;
             
