@@ -10,47 +10,38 @@ import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import models.Produto;
+import models.Categoria;
 
-public class ProdutoDatabaseRepository implements IProdutoRepository {
+public class CategoriaDatabaseRepository implements ICategoriaRepository {
 
-    private ArrayList<Produto> produtos;
+    private ArrayList<Categoria> categorias;
     private Connection connection;
     
     protected EntityManager entityManager;
     
-    public Produto getByCodigo(int codigo) throws SQLException {
+    public Categoria getByCodigo(int codigo) throws SQLException {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProjetoWebT12PU");
         if (entityManager == null) {
             entityManager = emf.createEntityManager();
         }
         
-        return entityManager.find(Produto.class, codigo);
+        return entityManager.find(Categoria.class, codigo);
     }
     
-    public void remove(Produto produto) throws SQLException {
+    public void remove(Categoria categoria) throws SQLException {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProjetoWebT12PU");
         if (entityManager == null) {
             entityManager = emf.createEntityManager();
         }
         
-        entityManager.remove(produto);
+        entityManager.remove(categoria);
     }
 
-    public List<Produto> getAll() throws SQLException {
+    public List<Categoria> getAll() throws SQLException {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProjetoWebT12PU");
         if (entityManager == null) {
             entityManager = emf.createEntityManager();
         }
-        return entityManager.createQuery(" FROM " + Produto.class.getName(), Produto.class).getResultList();
-    }
-
-    @Override
-    public void update(Produto produto) throws Exception {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProjetoWebT12PU");
-        if (entityManager == null) {
-            entityManager = emf.createEntityManager();
-        }
-        entityManager.persist(produto);
+        return entityManager.createQuery(" FROM " + Categoria.class.getName(), Categoria.class).getResultList();
     }
 }

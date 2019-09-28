@@ -39,7 +39,7 @@
                         <td><%= produto.getValor()%></td>
                         <td><%= produto.getCategoria().getNome() %></td>
                         <td><a class="btn btn-primary" href="/ProjetoWebT12/AdicionarCarrinho?codigo=<%= produto.getCodigo() %>">Adicionar</a></td>
-                        <td><a class="btn btn-warning" href="/ProjetoWebT12/EditarProduto?codigo=<%= produto.getCodigo() %>">Adicionar</a></td>
+                        <td><a class="btn btn-warning" href="/ProjetoWebT12/EditarProduto?codigo=<%= produto.getCodigo() %>">Editar</a></td>
                         <td><button class="btn btn-danger" onClick="RemoverProduto(<%= produto.getCodigo() %>)">Remover</a></td>
                     </tr>
                 <% } %>

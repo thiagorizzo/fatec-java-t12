@@ -36,7 +36,7 @@ public class AdicionarCarrinhoServlet extends BaseServlet {
         HttpSession session = request.getSession();
         
         try {
-            IProdutoRepository produtoRepository = ProdutoRepositoryFactory.create(ProdutoRepositoryTypeEnum.Database, repositoryOptions);
+            IProdutoRepository produtoRepository = ProdutoRepositoryFactory.create(ProdutoRepositoryTypeEnum.Database);
 
             Produto produto = produtoRepository.getByCodigo(codigoProduto);
             if (produto == null)

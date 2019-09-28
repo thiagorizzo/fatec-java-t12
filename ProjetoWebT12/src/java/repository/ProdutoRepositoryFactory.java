@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 public class ProdutoRepositoryFactory {
 
-    public static IProdutoRepository create(ProdutoRepositoryTypeEnum tipo, RepositoryOptions options) throws ClassNotFoundException, SQLException {
+    public static IProdutoRepository create(ProdutoRepositoryTypeEnum tipo) throws ClassNotFoundException, SQLException {
         switch(tipo)
         {
             case Database:
