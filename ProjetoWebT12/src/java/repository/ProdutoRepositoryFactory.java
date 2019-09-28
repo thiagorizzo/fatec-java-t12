@@ -9,10 +9,7 @@ public class ProdutoRepositoryFactory {
         switch(tipo)
         {
             case Database:
-                return new ProdutoDatabaseRepository(options.getDatabaseDriver(), options.getDatabaseConnectionString(), options.getDatabaseUserName(), options.getDatabaseUserPassword());
-                
-            case InMemory:
-                return new ProdutoInMemoryRepository();
+                return new ProdutoDatabaseRepository();
         }
         
         return null;

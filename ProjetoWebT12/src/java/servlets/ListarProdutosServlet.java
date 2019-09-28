@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,16 +30,16 @@ public class ListarProdutosServlet extends BaseServlet {
         try {
             IProdutoRepository produtoRepository = ProdutoRepositoryFactory.create(ProdutoRepositoryTypeEnum.Database, repositoryOptions);
         
-            ArrayList<Produto> produtos = null;
+            List<Produto> produtos = null;
             
             String codigoString = request.getParameter("codigo");
             if (codigoString == null || codigoString.isEmpty())
                 produtos = produtoRepository.getAll();
             else {
                 produtos = new ArrayList<Produto>();
-                Optional<Produto> produto = produtoRepository.getByCodigo(Integer.parseInt(codigoString));
-                if (produto.isPresent())
-                    produtos.add(produto.get());
+                Produto produto = produtoRepository.getByCodigo(Integer.parseInt(codigoString));
+                if (produto != null)
+                    produtos.add(produto);
             }
 
             // Incluindo produtos no atributo da requisição

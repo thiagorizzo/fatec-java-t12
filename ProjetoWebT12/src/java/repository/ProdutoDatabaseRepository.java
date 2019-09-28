@@ -5,7 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import models.Produto;
 
 public class ProdutoDatabaseRepository implements IProdutoRepository {
@@ -13,41 +17,31 @@ public class ProdutoDatabaseRepository implements IProdutoRepository {
     private ArrayList<Produto> produtos;
     private Connection connection;
     
-    public ProdutoDatabaseRepository(String driver, String stringConnection, String userName, String userPassword) throws ClassNotFoundException, SQLException {
-        connection = Database.getConnection(driver , stringConnection, userName, userPassword);
+    protected EntityManager entityManager;
+    
+    public Produto getByCodigo(int codigo) throws SQLException {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProjetoWebT12PU");
+        if (entityManager == null) {
+            entityManager = emf.createEntityManager();
+        }
+        
+        return entityManager.find(Produto.class, codigo);
     }
     
-    @Override
-    public Optional<Produto> getByCodigo(int codigo) throws SQLException {
-        Optional<Produto> produto = null;
-        
-        PreparedStatement ps = connection.prepareStatement("SELECT * FROM produto WHERE id = ?");
-        ps.setInt(1, codigo);
-        ResultSet rs = ps.executeQuery();
-        if (rs.first()) {
-            String nome = rs.getString("nome");
-            float preco = rs.getFloat("preco");
-            produto = Optional.of(new Produto(codigo, nome, preco));
+    public void remove(Produto produto) throws SQLException {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProjetoWebT12PU");
+        if (entityManager == null) {
+            entityManager = emf.createEntityManager();
         }
         
-        return produto;
+        entityManager.remove(produto);
     }
 
-    @Override
-    public ArrayList<Produto> getAll() throws SQLException {
-        ArrayList<Produto> produtos = new ArrayList<Produto>();
-        
-        PreparedStatement ps = connection.prepareStatement("SELECT * FROM produto");
-        ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            int codigo = rs.getInt("id");
-            String nome = rs.getString("nome");
-            float preco = rs.getFloat("preco");
-            Produto produto = new Produto(codigo, nome, preco);
-            
-            produtos.add(produto);
+    public List<Produto> getAll() throws SQLException {
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProjetoWebT12PU");
+        if (entityManager == null) {
+            entityManager = emf.createEntityManager();
         }
-        
-        return produtos;        
+        return entityManager.createQuery(" FROM " + Produto.class.getName(), Produto.class).getResultList();
     }
 }

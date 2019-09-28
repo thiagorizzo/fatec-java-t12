@@ -38,15 +38,15 @@ public class AdicionarCarrinhoServlet extends BaseServlet {
         try {
             IProdutoRepository produtoRepository = ProdutoRepositoryFactory.create(ProdutoRepositoryTypeEnum.Database, repositoryOptions);
 
-            Optional<Produto> produto = produtoRepository.getByCodigo(codigoProduto);
-            if (!produto.isPresent())
+            Produto produto = produtoRepository.getByCodigo(codigoProduto);
+            if (produto == null)
                 throw new Exception("Produto não encontrado.");
 
             Object carrinhoSessao = (Carrinho) session.getAttribute("carrinho");
             if (carrinhoSessao == null) {
                 ArrayList<ProdutoCarrinho> produtos = new ArrayList<ProdutoCarrinho>();
                 ProdutoCarrinho produtoCarrinho = new ProdutoCarrinho();
-                produtoCarrinho.setProduto(produto.get());
+                produtoCarrinho.setProduto(produto);
                 produtoCarrinho.setQuantidade(1);
                 produtos.add(produtoCarrinho);
                 
@@ -59,7 +59,7 @@ public class AdicionarCarrinhoServlet extends BaseServlet {
                 Optional<ProdutoCarrinho> produtoCarrinho = carrinho.getProdutos().stream().filter(p -> p.getProduto().getCodigo() == codigoProduto).findFirst();
                 if (!produtoCarrinho.isPresent()) {
                     ProdutoCarrinho novo = new ProdutoCarrinho();
-                    novo.setProduto(produto.get());
+                    novo.setProduto(produto);
                     novo.setQuantidade(1);
                     
                     carrinho.getProdutos().add(novo);
