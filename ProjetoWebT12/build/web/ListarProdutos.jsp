@@ -1,13 +1,10 @@
-<%-- 
-    Document   : ListarProdutos
-    Created on : 14/09/2019, 11:13:53
-    Author     : FATECRP
---%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.ArrayList"%>
 <%@page import="models.Produto"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@include file="Menu.jsp" %>
+<%@taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="format" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,23 +23,18 @@
                 <th>Valor</th>
                 <th>Categoria</th>
             </thead>
-            
             <tbody>
-                <%
-                    ArrayList<Produto> produtos = (ArrayList<Produto>) request.getAttribute("ListaProdutos");
-
-                    for(Produto produto : produtos) {
-                %>
+                <c:forEach items="${ListaProdutos}" var="produto">
                     <tr>
-                        <td><%= produto.getCodigo() %></td>
-                        <td><%= produto.getNome() %></td>
-                        <td><%= produto.getValor()%></td>
-                        <td><%= produto.getCategoria().getNome() %></td>
-                        <td><a class="btn btn-primary" href="/ProjetoWebT12/AdicionarCarrinho?codigo=<%= produto.getCodigo() %>">Adicionar</a></td>
-                        <td><a class="btn btn-warning" href="/ProjetoWebT12/EditarProduto?codigo=<%= produto.getCodigo() %>">Editar</a></td>
-                        <td><button class="btn btn-danger" onClick="RemoverProduto(<%= produto.getCodigo() %>)">Remover</a></td>
+                        <td>${produto.getCodigo()}</td>
+                        <td>${produto.getNome()}</td>
+                        <td>${produto.getValor()}</td>
+                        <td>${produto.getCategoria().getNome()}</td>
+                        <td><a class="btn btn-primary" href="/ProjetoWebT12/AdicionarCarrinho?codigo=${produto.getCodigo()}">Adicionar</a></td>
+                        <td><a class="btn btn-warning" href="/ProjetoWebT12/EditarProduto?codigo=${produto.getCodigo()}">Editar</a></td>
+                        <td><button class="btn btn-danger" onClick="RemoverProduto(${produto.getCodigo()})">Remover</a></td>
                     </tr>
-                <% } %>
+                </c:forEach>
             </tbody>
         </table>
     </body>

@@ -74,6 +74,7 @@ public class AdicionarCarrinhoServlet extends BaseServlet {
                     session.setAttribute("carrinho", carrinho);
                 }
             }
+            response.sendRedirect("/ProjetoWebT12/Produtos");
         } catch (Exception ex) {
             request.setAttribute("exception", ex);
 
