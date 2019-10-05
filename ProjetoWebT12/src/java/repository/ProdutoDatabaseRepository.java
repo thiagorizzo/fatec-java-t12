@@ -9,48 +9,64 @@ import java.util.List;
 import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import models.Produto;
+import static repository.Repository.entityManager;
 
+/*
+    Novo produto
+         - new Produto()
+         - persist()
+         - commit
+
+    Alterar produto
+
+        1) 
+            - find/createQuery (coloca como gerenciado)
+            - modifica o objeto
+            - commit
+
+        2) Deatached
+            - produto com Id (chave primária) porém não está gerenciado
+            - merge (entrar no estado gerenciado)
+            - commit
+
+    Remover produto
+
+        1)
+            - find/query
+            - marca objeto como removido
+            - commit
+
+        2)
+            - produto com ID
+            - merge
+            - removed
+            - commit
+*/
 public class ProdutoDatabaseRepository implements IProdutoRepository {
 
     private ArrayList<Produto> produtos;
     private Connection connection;
     
-    protected EntityManager entityManager;
-    
     public Produto getByCodigo(int codigo) throws SQLException {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProjetoWebT12PU");
-        if (entityManager == null) {
-            entityManager = emf.createEntityManager();
-        }
-        
-        return entityManager.find(Produto.class, codigo);
+        EntityManager em = Repository.getEntityManager();
+        return em.find(Produto.class, codigo);
     }
     
     public void remove(Produto produto) throws SQLException {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProjetoWebT12PU");
-        if (entityManager == null) {
-            entityManager = emf.createEntityManager();
-        }
-        
-        entityManager.remove(produto);
+        EntityManager em = Repository.getEntityManager();
+        em.remove(produto);
     }
 
     public List<Produto> getAll() throws SQLException {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProjetoWebT12PU");
-        if (entityManager == null) {
-            entityManager = emf.createEntityManager();
-        }
-        return entityManager.createQuery(" FROM " + Produto.class.getName(), Produto.class).getResultList();
+        EntityManager em = Repository.getEntityManager();
+        return em.createQuery(" FROM " + Produto.class.getName(), Produto.class).getResultList();
     }
 
     @Override
     public void update(Produto produto) throws Exception {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ProjetoWebT12PU");
-        if (entityManager == null) {
-            entityManager = emf.createEntityManager();
-        }
-        entityManager.persist(produto);
+        Repository.update();
     }
 }
