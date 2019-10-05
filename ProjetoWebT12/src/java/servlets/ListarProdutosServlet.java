@@ -20,7 +20,7 @@ import models.*;
 import repository.*;
 
 @WebServlet(
-        name = "Listar Produtos",
+        name = "ListarProdutos",
         urlPatterns = "/Produtos"
 )
 public class ListarProdutosServlet extends BaseServlet {

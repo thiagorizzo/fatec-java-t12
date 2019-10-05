@@ -39,7 +39,7 @@
                 </select>
             </div>   
             <input type="hidden" name="codigo" value="<%= produto.getCodigo()%>">
-            <button type="submit">Enviar</button>
+            <button class="btn btn-primary" type="submit">Enviar</button>
         </form>
     </body>
 </html>
