@@ -4,9 +4,27 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/repository/ProdutoDatabaseRepository.java</file>
-            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/servlets/EditarProduto.java</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/models/ProdutoCarrinho.java</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/repository/CategoriaDatabaseRepository.java</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/web/Erro.jsp</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/web/ListarProdutos.jsp</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/servlets/ListarCarrinhoServlet.java</file>
             <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/repository/IProdutoRepository.java</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/models/Carrinho.java</file>
             <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/web/FormProduto.jsp</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/filters/AutorizacaoFilter.java</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/servlets/Login.java</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/servlets/AdicionarCarrinhoServlet.java</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/models/Usuario.java</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/servlets/EditarProduto.java</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/web/Carrinho.jsp</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/repository/UsuarioRepository.java</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/web/Login.jsp</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/web/Menu.jsp</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/models/Produto.java</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/servlets/LimparCarrinhoServlet.java</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/repository/Repository.java</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/servlets/ListarProdutosServlet.java</file>
         </group>
     </open-files>
 </project-private>
