@@ -7,6 +7,7 @@
             <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/models/ProdutoCarrinho.java</file>
             <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/repository/CategoriaDatabaseRepository.java</file>
             <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/web/Erro.jsp</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/web/Produtos.html</file>
             <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/web/ListarProdutos.jsp</file>
             <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/servlets/ListarCarrinhoServlet.java</file>
             <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/repository/IProdutoRepository.java</file>
@@ -14,6 +15,7 @@
             <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/web/FormProduto.jsp</file>
             <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/filters/AutorizacaoFilter.java</file>
             <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/servlets/Login.java</file>
+            <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/webservice/ProdutoWS.java</file>
             <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/servlets/AdicionarCarrinhoServlet.java</file>
             <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/models/Usuario.java</file>
             <file>file:/C:/fatec-java/fatec-java-t12/ProjetoWebT12/src/java/servlets/EditarProduto.java</file>

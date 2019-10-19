@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Table(name="Produto")
 public class Produto implements Serializable {
     
-    @Id @GeneratedValue
+    @Id
     @Column(name = "id") 
     private int codigo;
     

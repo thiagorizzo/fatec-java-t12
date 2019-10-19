@@ -26,5 +26,6 @@ public class Repository {
         EntityTransaction et = entityManager.getTransaction();
         et.begin();
         entityManager.flush();
+        et.commit();
     }
 }

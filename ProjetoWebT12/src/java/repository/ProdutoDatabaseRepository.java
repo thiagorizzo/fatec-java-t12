@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import models.Produto;
 import static repository.Repository.entityManager;
 
@@ -65,8 +66,25 @@ public class ProdutoDatabaseRepository implements IProdutoRepository {
         return em.createQuery(" FROM " + Produto.class.getName(), Produto.class).getResultList();
     }
 
+    public Produto create(Produto produto) {
+        EntityManager em = Repository.getEntityManager();
+        EntityTransaction transaction = em.getTransaction();
+        transaction.begin();
+        em.persist(produto);
+        transaction.commit();
+        return produto;
+    }
+    
     @Override
     public void update(Produto produto) throws Exception {
         Repository.update();
+    }
+
+    @Override
+    public List<Produto> getByNome(String nomeProduto) throws Exception {
+        EntityManager em = Repository.getEntityManager();
+        TypedQuery<Produto> query = em.createQuery(" FROM " + Produto.class.getName() + " WHERE nome LIKE :nomeProduto", Produto.class);
+        query.setParameter("nomeProduto", "%" + nomeProduto + "%");
+        return query.getResultList();
     }
 }
